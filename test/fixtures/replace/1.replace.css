@@ -1,0 +1,52 @@
+.test {
+    background-image:url({%myHost%}/asset/tps/i2/T10s3JXn4XXXXnbIAn-105-160.png);/* 普通屏幕 */
+    background-image: -webkit-image-set(
+        url( "{%myHost%}/asset/index/a/b.png" ) 1x,
+        url({%myHost%}/asset/index/test/from.gif) 2x);/* Retina */
+}
+
+div {
+    background-image: image-set( "{%myHost%}/asset/index/test.png" 1x, '{%myHost%}/asset/index/test-2x.png' 2x, "{%myHost%}/asset/index/test-print.png" 600dpi );
+    background-image: image-set(
+        "{%myHost%}/asset/index/test.png" 1x,
+        '{%myHost%}/asset/index/test-2x.png' 2x,
+        "{%myHost%}/asset/index/test-print.png" 600dpi
+    );
+    background-image: image-set( url('{%myHost%}/asset/index/test.png') 1x, url({%myHost%}/asset/index/test-2x.png) 2x );
+}
+
+.oDiv {
+    position:relative;  width:200px; color:gold;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='{%myHost%}/asset/index/a/b/earglobe.gif');
+
+}
+
+
+.yourselector {
+    background: url(//www.baidu.com/folder/yourimage.png) no-repeat;
+    _background:none;
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{%myHost%}/asset/index/folder/yourimage.png',sizingMethod='crop');
+}
+
+img, .png {
+    position: relative;
+    behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+       this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+       this.src = "{%myHost%}/asset/index/images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+       this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
+       this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
+    filter: url({%myHost%}/asset/index/resources.svg#c1)
+
+}
+
+
+@media only screen and (min--moz-device-pixel-ratio: 1.5),
+(-o-min-device-pixel-ratio: 3/2),
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5) {
+
+    #my-image {
+        background:url({%myHost%}/asset/index/high.png);
+    }
+}

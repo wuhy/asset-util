@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="http://myDomain/src/a/b.css" rel="stylesheet">
+</head>
+<body>
+<img>
+
+<picture>
+    <source media="(min-width: 800px)"
+            sizes="80vw"
+            srcset="../lighthouse-landscape-640.jpg 640w,
+                  lighthouse-landscape-1280.jpg 1280w,
+                  lighthouse-landscape-2560.jpg 2560w">
+    <img src="http://myDomain/src/lighthouse-160.jpg" alt="lighthouse"
+         sizes="80vw"
+         srcset="{% myhost %}/lighthouse-160.jpg 160w,
+               http://myDomain/src/abc/lighthouse-320.jpg 320w,
+               http://myDomain/src/test/lighthouse-160.jpg 640w,
+               http://myDomain/src/lighthouse-1280.jpg 1280w">
+</picture>
+</body>
+</html>

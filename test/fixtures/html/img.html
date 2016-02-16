@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<picture>
+    <source srcset="mdn-logo-wide.png" media="(min-width: 600px)">
+    <img src="mdn-logo-narrow.png" alt="MDN">
+</picture>
+<picture>
+    <source srcset="mdn-logo.svg" type="image/svg+xml">
+    <img src="mdn-logo.png" alt="MDN">
+</picture>
+<picture>
+
+    <source src="large.jpg"
+            media="( (min-device-pixel-ratio: 1.5) and (min-width: 20.001em) and (max-width: 35.999em) ) or
+                 ( (max-device-pixel-ratio: 1.5) and (min-width: 120.001em) ) or
+                 ( (min-device-pixel-ratio: 1.5) and (min-width: 60.001em) )" />
+    <source src="medium.jpg"
+            media="( (max-device-pixel-ratio: 1.5) and (min-width: 20.001em) and (max-width: 35.999em) ) or
+                 ( (max-device-pixel-ratio: 1.5) and (min-width: 60.001em) ) or
+                 ( (min-device-pixel-ratio: 1.5) and (min-width: 10.001em) )" />
+    <source src="small.jpg" />
+
+    <!-- fallback -->
+    <img src="small.jpg" alt="A rad wolf" />
+
+</picture>
+<picture width="500" height="500">
+    <source media="(min-width: 45em)" srcset="large-1.jpg 1x, large-2.jpg 2x">
+    <source media="(min-width: 18em)" srcset="med-1.jpg 1x, med-2.jpg 2x">
+    <source srcset="small-1.jpg 1x, small-2.jpg 2x">
+    <img src="small-1.jpg" alt="">
+    <p>Accessible text</p>
+</picture>
+<picture>
+    <source
+        media="(min-width: 650px)"
+        srcset="images/kitten-stretching.png,
+            images/kitten-stretching@1.5x.png 1.5x,
+            images/kitten-stretching@2x.png 2x">
+    <img
+        src="images/kitten-curled.png"
+        srcset="images/kitten-curled@1.5x.png 1.5x,
+            images/kitten-curled@2x.png 2x"
+        alt="a cute kitten">
+</picture>
+<picture>
+    <source media="(min-width: 800px)"
+            sizes="80vw"
+            srcset="lighthouse-landscape-640.jpg 640w,
+                  lighthouse-landscape-1280.jpg 1280w,
+                  lighthouse-landscape-2560.jpg 2560w">
+    <img src="lighthouse-160.jpg" alt="lighthouse"
+         sizes="80vw"
+         srcset="lighthouse-160.jpg 160w,
+               lighthouse-320.jpg 320w,
+               lighthouse-640.jpg 640w,
+               lighthouse-1280.jpg 1280w">
+</picture>
+<picture>
+    <source type="image/webp" srcset="images/butterfly.webp">
+    <img src="images/butterfly.jpg" alt="a butterfly">
+</picture>
+<img src="lighthouse-160.jpg" alt="lighthouse"
+     sizes="80vw"
+     srcset="lighthouse-160.jpg 160w,
+             lighthouse-320.jpg 320w,
+             lighthouse-640.jpg 640w,
+             lighthouse-1280.jpg 1280w">
+<img src="foo-lores.jpg"
+     srcset="foo-hires.jpg 2x,
+    foo-superduperhires.jpg 6.5x"
+     alt="decent alt text for foo.">
+</body>
+</html>

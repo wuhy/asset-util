@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<script>require(['from']);</script>-->
+<script src="http://xxx.baidu.com/esl.js" data-main="report/main"></script>
+    <script>
+        require.config({
+            baseUrl: 'src'
+        });
+        require(['abc/ss']);
+    </script>
+    <script>require(['main', 'lib/common']);</script>
+<script>require([
+    'common',
+    'index/main'
+]);</script>
+<script>require(['manage/index'], function (index) {
+    console.log(index);
+    // require('test');
+});</script>
+<script>
+    require('hello');
+    require('world/test');
+    require(['test/main']);
+</script>
+<script>
+    /* require(['comment/main']); */
+</script>
+</body>
+</html>
