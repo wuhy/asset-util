@@ -27,6 +27,13 @@ describe('path util', function () {
         expect(pathUtil.isLocalPath('ftp://a/b')).to.be(false);
     });
 
+    it('should rebase the given path', function () {
+        expect(pathUtil.rebasePath('./a/b.js', 'index.html', 'c/index.html')).to.be('../a/b.js');
+        expect(pathUtil.rebasePath('../a.js', 'c/index.html', 'index.html')).to.be('a.js');
+        expect(pathUtil.rebasePath('b.js', 'c/index.html', 'index.html')).to.be('c/b.js');
+        expect(pathUtil.rebasePath('/b.js', 'c/index.html', 'index.html')).to.be('/b.js')
+    });
+
     it('should resovle relative path', function () {
         expect(pathUtil.resolvePath('./a/b.js', 'src/index.html')).to.eql('/src/a/b.js');
         expect(pathUtil.resolvePath('../a/b.js', 'src/index.html')).to.eql('/a/b.js');

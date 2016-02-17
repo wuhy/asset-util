@@ -148,8 +148,8 @@ describe('replacer', function () {
             rules: [
                 {tag: 'img'},
                 {tag: 'script', replacer: {
-                    domain: function (url, isLocalPath) {
-                        if (!isLocalPath) {
+                    domain: function (url, file) {
+                        if (!file.isLocalPath(url)) {
                             var domain1 = 'www.baidu.com';
                             if (url.indexOf(domain1) !== -1) {
                                 return url.replace(domain1, 'test.baidu.com');
@@ -301,13 +301,15 @@ describe('replacer', function () {
         });
         expect(result).to.eql('http://facebook.com/a/b.css');
 
+        options = {};
         result = replacer.rewriteURL('./a/b.css', file, {
-            domain: function (url, isLocal, file) {
+            domain: function (url, file, opt) {
                 expect(url).to.eql('./a/b.css');
-                expect(isLocal).to.be(true);
+                expect(file.isLocalPath('./a/b.css')).to.be(true);
                 expect(file.resolve('./a/b.css')).to.eql('/src/main/a/b.css');
+                expect(opt === options).to.be(true);
             }
-        });
+        }, options);
         expect(result).to.eql('./a/b.css');
 
         result = replacer.rewriteURL('./a/b.css', file, {
@@ -390,18 +392,21 @@ describe('replacer', function () {
         });
         expect(result).to.eql('hello world. ***');
 
+        options = {
+            replacer: function (path, file, opt) {
+                expect(path).to.eql('http://www.baidu.com');
+                expect(file.resolve('./a/b.css')).to.eql('/src/a/b.css');
+                expect(opt === options).to.be(true);
+                return '***';
+            }
+        };
         result = replacer.replaceByRules(file, [
             {
                 reg: /\(from:\s*([^\)]+)\)/,
                 group: 1,
                 path: true
             }
-        ], {
-            replacer: function (path) {
-                expect(path).to.eql('http://www.baidu.com');
-                return '***';
-            }
-        });
+        ], options);
         expect(result).to.eql('hello world. (from: ***)');
 
         result = replacer.replaceByRules(file, [
