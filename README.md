@@ -5,4 +5,13 @@ asset-util
 
 > A node utility to provide useful asset utilities, e.g., rewrite resource url.
 
+## How to use
 
+### Install
+
+```shell
+npm install asset-util --save
+```
+### API
+
+See test case and source.
