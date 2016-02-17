@@ -17,6 +17,9 @@ describe('parse html', function () {
 
         regexp = htmlUtil.getTagRegexp('script', true);
         expect(regexp).to.eql(/(<!--[\s\S]*?)(?:-->|$)|<script([^>]*?)\/?>([\s\S]*?)(?:<\/script>)/gi);
+
+        regexp = htmlUtil.getTagRegexp('link', true, true);
+        expect(regexp).to.eql(/(<!--[\s\S]*?)(?:-->|$)|<link([^>]*?)\/?>(?:([\s\S]*?)(?:<\/link>))?/gi);
     });
 
     it('should return image url', function () {
