@@ -359,18 +359,21 @@ describe('replacer', function () {
         ], options);
         expect(result).to.eql('hello world. (from:***)');
 
+        options = {
+            replacer: function (result, file, opts) {
+                expect(result.match).to.eql(match);
+                expect(result.value).to.eql('http://www.baidu.com');
+                expect(opts === options).to.eql(true);
+                expect(file.resolve('./a/b.css')).to.eql('/src/a/b.css');
+                return '(from:***)';
+            }
+        };
         result = replacer.replaceByRules(file, [
             {
                 reg: /\(from:\s*([^\)]+)\)/,
                 group: 1
             }
-        ], {
-            replacer: function (result) {
-                expect(result.match).to.eql(match);
-                expect(result.value).to.eql('http://www.baidu.com');
-                return '(from:***)';
-            }
-        });
+        ], options);
         expect(result).to.eql('hello world. (from:***)');
 
         result = replacer.replaceByRules(file, [
