@@ -441,6 +441,15 @@ describe('replacer', function () {
             }
         });
         expect(result).to.eql('<img src="http://www.google.com/a.jpg">');
+
+        result = replacer.replaceByRules(file, [
+            {
+                replacer: function (result) {
+                    return result.match.replace('www.baidu.com', 'www.google.com')
+                }
+            }
+        ]);
+        expect(result).to.eql('<img src="http://www.google.com/a.jpg">');
     });
 
 });
